@@ -1,0 +1,28 @@
+package tn.esprit.tpfoyer.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import tn.esprit.tpfoyer.entities.Bloc;
+import tn.esprit.tpfoyer.entities.Foyer;
+import tn.esprit.tpfoyer.services.BlocServiceImp;
+import tn.esprit.tpfoyer.services.FoyerServiceImp;
+
+import java.util.List;
+@RestController
+public class FoyerController {
+    @Autowired
+    FoyerServiceImp foyerServiceImp;
+    @PostMapping("/addFoyer")
+    public Foyer addFoyer(@RequestBody Foyer b){
+        return foyerServiceImp.addFoyer(b);
+    }
+    @GetMapping("/getFoyer")
+    public List<Foyer> getFoyer(){
+        return foyerServiceImp.retrieveAllFoyer();
+    }
+    @DeleteMapping("/supprimerFoyer/{b}")
+    public void supprmerBlocs(@PathVariable("b")long b)
+    {
+        foyerServiceImp.removeFoyer(b);
+    }
+}
