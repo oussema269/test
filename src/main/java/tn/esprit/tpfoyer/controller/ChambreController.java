@@ -34,6 +34,11 @@ public class ChambreController {
       c.setNumeroCharhambre(c1.getNumeroCharhambre());
         return chambreService.modifyChambre(c);
     }
+    @GetMapping("/getChambresParBlocEtType/{idBloc}")
+    public List<Chambre>getChambresParBlocEtType(@PathVariable("idBloc") Long idBloc,@RequestBody Chambre c)
+    {
+        return chambreService.getChambresParBlocEtType(idBloc,c.getTypeC());
+    }
 
 
 

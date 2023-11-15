@@ -3,7 +3,9 @@ package tn.esprit.tpfoyer.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entities.Bloc;
+import tn.esprit.tpfoyer.entities.Chambre;
 import tn.esprit.tpfoyer.repository.IBlocRepository;
+import tn.esprit.tpfoyer.repository.IChambreRepository;
 
 import java.util.List;
 
@@ -11,6 +13,8 @@ import java.util.List;
 public class BlocServiceImp implements IBlocService {
 @Autowired
     IBlocRepository iBlocRepository;
+@Autowired
+    IChambreRepository iChambreRepository;
     @Override
     public List<Bloc> retrieveAllBlocs() {
 
@@ -36,5 +40,18 @@ public class BlocServiceImp implements IBlocService {
     @Override
     public Bloc modifyBloc(Bloc bloc) {
         return iBlocRepository.save(bloc);
+    }
+
+    @Override
+    public Bloc affectBlocChambre(List<Long> idChambre, long idBloc) {
+        Bloc b=iBlocRepository.findById(idBloc).get();
+        for(Long id:idChambre )
+        {
+            Chambre c=iChambreRepository.findById(id).get();
+
+           c.setBloc(b);
+        }
+
+        return  b;
     }
 }

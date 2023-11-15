@@ -1,5 +1,6 @@
 package tn.esprit.tpfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class Foyer {
     @OneToMany(cascade = CascadeType.ALL , mappedBy ="foyer")
     private List<Bloc>  idBloc;
     @OneToOne(cascade = CascadeType.ALL , mappedBy ="foyer")
+    @JsonIgnore
     private  Universite univ;
 
 }

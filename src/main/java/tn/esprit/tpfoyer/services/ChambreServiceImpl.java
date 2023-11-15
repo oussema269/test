@@ -3,6 +3,7 @@ package tn.esprit.tpfoyer.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entities.Chambre;
+import tn.esprit.tpfoyer.entities.TypeChambre;
 import tn.esprit.tpfoyer.repository.IChambreRepository;
 
 import java.util.List;
@@ -38,5 +39,16 @@ public class ChambreServiceImpl implements IChambreService {
     @Override
     public Chambre modifyChambre(Chambre c) {
         return iChambreRepository.save(c) ;
+    }
+
+    @Override
+    public List<Chambre> getChambresParNomUniversite(String nomUniversite) {
+
+        return null;
+    }
+
+    @Override
+    public List<Chambre> getChambresParBlocEtType(long idBloc, TypeChambre typeC) {
+        return iChambreRepository.findByBloc_IdBlocAndTypeC(idBloc,typeC);
     }
 }

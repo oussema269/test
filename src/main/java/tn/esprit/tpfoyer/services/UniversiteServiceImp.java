@@ -2,7 +2,9 @@ package tn.esprit.tpfoyer.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.tpfoyer.entities.Foyer;
 import tn.esprit.tpfoyer.entities.Universite;
+import tn.esprit.tpfoyer.repository.IFoyerRepository;
 import tn.esprit.tpfoyer.repository.IUniversiteRepository;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
 public class UniversiteServiceImp implements IUniversiteService {
 @Autowired
 IUniversiteRepository iUniversiteRepository;
+@Autowired
+    IFoyerRepository iFoyerRepository;
     @Override
     public List<Universite> retrieveAllUniversite() {
         return iUniversiteRepository.findAll();
@@ -34,4 +38,13 @@ iUniversiteRepository.deleteById(id);
     public Universite modifyUniversite(Universite u) {
         return iUniversiteRepository.save(u);
     }
+
+    @Override
+    public Universite affecteFoyerUniversite(long idFoyer, long idUniversite) {
+        Universite u=iUniversiteRepository.findById(idUniversite).get();
+        Foyer f=iFoyerRepository.findById(idFoyer).get();
+        u.setFoyer(f);
+        return  u;
+    }
+
 }

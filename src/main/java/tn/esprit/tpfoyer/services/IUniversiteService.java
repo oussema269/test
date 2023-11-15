@@ -11,4 +11,5 @@ public interface IUniversiteService {
     public Universite addUniversite(Universite u);
     public void removeUniversite(Long id);
     public Universite modifyUniversite(Universite u);
+    public Universite affecteFoyerUniversite(long idFoyer , long idUniversite);
 }

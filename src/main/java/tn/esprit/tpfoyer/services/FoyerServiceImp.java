@@ -3,6 +3,7 @@ package tn.esprit.tpfoyer.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entities.Foyer;
+import tn.esprit.tpfoyer.entities.Universite;
 import tn.esprit.tpfoyer.repository.IFoyerRepository;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class FoyerServiceImp implements IFoyerService {
 @Autowired
     IFoyerRepository iFoyerRepository;
+
     @Override
     public List<Foyer> retrieveAllFoyer() {
         return iFoyerRepository.findAll();
@@ -34,4 +36,13 @@ public class FoyerServiceImp implements IFoyerService {
     public Foyer modifyBloc(Foyer foyer) {
         return iFoyerRepository.save(foyer);
     }
+
+    @Override
+    public Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer, long idUniversite) {
+        Universite u=iFoyerRepository.findByUniv_IdUniversite(idUniversite);
+        foyer.setUniv(u);
+        iFoyerRepository.save(foyer);
+        return foyer;
+    }
+
 }

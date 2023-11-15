@@ -1,5 +1,6 @@
 package tn.esprit.tpfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -20,5 +21,6 @@ public class Universite {
     private String nomUniversite;
     private String adresse;
     @OneToOne
+
     private Foyer foyer;
 }

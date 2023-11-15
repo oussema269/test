@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import tn.esprit.tpfoyer.entities.Bloc;
 import tn.esprit.tpfoyer.entities.Chambre;
+import tn.esprit.tpfoyer.entities.TypeChambre;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface IChambreRepository extends JpaRepository<Chambre,Long> {
 
 
     Chambre findById(long id);
+    public List<Chambre> findByBloc_IdBlocAndTypeC(long idBloc , TypeChambre typec);
 }

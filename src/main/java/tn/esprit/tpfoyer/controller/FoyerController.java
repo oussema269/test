@@ -21,8 +21,11 @@ public class FoyerController {
         return foyerServiceImp.retrieveAllFoyer();
     }
     @DeleteMapping("/supprimerFoyer/{b}")
-    public void supprmerBlocs(@PathVariable("b")long b)
-    {
+    public void supprmerFoyer(@PathVariable("b")long b) {
         foyerServiceImp.removeFoyer(b);
+    }
+    @PostMapping("/affectFoyerAuniversite/{idUniversite}")
+    public Foyer affectFoyerAuniversite(@RequestBody Foyer f ,@PathVariable("b")long idUniversite ){
+        return foyerServiceImp.ajouterFoyerEtAffecterAUniversite(f,idUniversite);
     }
 }

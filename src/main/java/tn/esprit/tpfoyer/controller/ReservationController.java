@@ -16,12 +16,12 @@ public class ReservationController {
     public Reservation addReservation(@RequestBody Reservation b){
         return reservationServiceImp.addReservation(b);
     }
-    @GetMapping("/getBlocs")
-    public List<Reservation> getBlocs(){
+    @GetMapping("/getReservation")
+    public List<Reservation> getReservations(){
         return reservationServiceImp.retrieveAllReservation();
     }
     @DeleteMapping("/supprimerReservation/{b}")
-    public void supprmerBlocs(@PathVariable("b")String b)
+    public void supprmerReservation(@PathVariable("b")String b)
     {
         reservationServiceImp.removeReservation(b);
     }

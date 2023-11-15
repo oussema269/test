@@ -25,4 +25,10 @@ public class BlocController {
     {
         blocServiceImp.removeBlock(b);
     }
+    @PostMapping("/affectBlocChambre/{idBloc}")
+    public Bloc affectBlocChambre(@RequestBody List<Long> idChambre , @PathVariable("idBloc") long idBloc)
+    {
+        return blocServiceImp.affectBlocChambre(idChambre,idBloc);
+
+    }
 }
