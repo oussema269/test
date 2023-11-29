@@ -4,6 +4,7 @@ package tn.esprit.tpfoyer.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entities.Reservation;
+import tn.esprit.tpfoyer.repository.IChambreRepository;
 import tn.esprit.tpfoyer.repository.IReservationRepository;
 
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
 public class ReservationServiceImp implements IReservationService {
 @Autowired
     IReservationRepository iReservationRepository;
-
+@Autowired
+    IChambreRepository iChambreRepository;
     @Override
     public List<Reservation> retrieveAllReservation() {
         return iReservationRepository.findAll();
@@ -35,5 +37,15 @@ public class ReservationServiceImp implements IReservationService {
     @Override
     public Reservation modifyReservation(Reservation reserv) {
         return iReservationRepository.save(reserv);
+    }
+
+    @Override
+    public Reservation findReservationParBloc(long idBloc) {
+        return iReservationRepository.findForReservation(idBloc);
+    }
+
+    @Override
+    public List<Reservation> findByAnneeUniversitaire_YearAndNomUnuiversite(int anneeUniversitaire, String nomUniversite) {
+        return iReservationRepository.findByAnneeUniversitaire_YearAndNomUnuiversite(anneeUniversitaire,nomUniversite);
     }
 }

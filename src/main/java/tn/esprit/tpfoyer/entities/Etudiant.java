@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Etudiant implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long idEtudiant;
     private String nomEt;
     private String prenomEt;

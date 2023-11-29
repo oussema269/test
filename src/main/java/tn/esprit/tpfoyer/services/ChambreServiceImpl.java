@@ -6,6 +6,7 @@ import tn.esprit.tpfoyer.entities.Chambre;
 import tn.esprit.tpfoyer.entities.TypeChambre;
 import tn.esprit.tpfoyer.repository.IChambreRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 
@@ -16,6 +17,7 @@ public class ChambreServiceImpl implements IChambreService {
     @Override
     public List<Chambre> retrieveAllChambres() {
         return iChambreRepository.findAll();
+
     }
 
     @Override
@@ -44,11 +46,16 @@ public class ChambreServiceImpl implements IChambreService {
     @Override
     public List<Chambre> getChambresParNomUniversite(String nomUniversite) {
 
-        return null;
+        return iChambreRepository.findByBloc_Foyer_Univ_NomUniversite(nomUniversite);
     }
 
     @Override
     public List<Chambre> getChambresParBlocEtType(long idBloc, TypeChambre typeC) {
-        return iChambreRepository.findByBloc_IdBlocAndTypeC(idBloc,typeC);
+        return iChambreRepository.findByBlocIdBlocAndTypeC(idBloc,typeC);
+    }
+
+    @Override
+    public List<Chambre> findByBlocIdBlocAndTypeChambreJPQL(long idBloc, TypeChambre typeChambre) {
+        return iChambreRepository.findByBlocIdBlocAndTypeChambreJPQL(idBloc,typeChambre);
     }
 }

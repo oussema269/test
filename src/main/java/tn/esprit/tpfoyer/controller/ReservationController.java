@@ -9,6 +9,8 @@ import tn.esprit.tpfoyer.services.ReservationServiceImp;
 
 import java.util.List;
 @RestController
+@RequestMapping("/Reservation")
+
 public class ReservationController {
     @Autowired
     ReservationServiceImp reservationServiceImp;
@@ -24,5 +26,13 @@ public class ReservationController {
     public void supprmerReservation(@PathVariable("b")String b)
     {
         reservationServiceImp.removeReservation(b);
+    }
+    @GetMapping("/findReservationParBloc/idBloc")
+    public Reservation findReservationParBloc(@PathVariable("idBloc") long idBloc){
+        return reservationServiceImp.findReservationParBloc(idBloc);
+    }
+    @GetMapping("/findByAnneeUniversitaire_YearAndNomUnuiversite/anneeUniversite/nomUniversite")
+    public List<Reservation> findByAnneeUniversitaire_YearAndNomUnuiversite(@PathVariable("anneeUniversitaire") int anneeUniversitaire,@PathVariable("nomUniversite") String nomUniversite){
+        return reservationServiceImp.findByAnneeUniversitaire_YearAndNomUnuiversite(anneeUniversitaire,nomUniversite);
     }
 }

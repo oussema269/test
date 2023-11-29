@@ -13,5 +13,7 @@ public interface IChambreService {
         public Chambre modifyChambre(Chambre c);
         public List<Chambre>  getChambresParNomUniversite( String nomUniversite);
         public List<Chambre> getChambresParBlocEtType (long idBloc, TypeChambre typeC) ;
+        List<Chambre> findByBlocIdBlocAndTypeChambreJPQL(long idBloc, TypeChambre typeChambre);
+
 
 }

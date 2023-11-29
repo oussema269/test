@@ -27,9 +27,10 @@ public class UniversiteController {
     {
         universiteServiceImp.removeUniversite(b);
     }
-    @PostMapping("/affecteUniversite/{id}/{idf}")
+    @PutMapping("/affecteUniversite/{id}/{idf}")
     public Universite AffecteUniversite(@PathVariable("id")long id , @PathVariable("idf")long idf ){
        Universite u= universiteServiceImp.affecteFoyerUniversite(idf,id);
        return u;
     }
+
 }

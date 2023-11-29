@@ -16,10 +16,12 @@ import java.util.List;
 @AllArgsConstructor
 public class Foyer {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long idFoyer;
     private String nomFoyer;
     private long capaciteFoyer;
     @OneToMany(cascade = CascadeType.ALL , mappedBy ="foyer")
+    @JsonIgnore
     private List<Bloc>  idBloc;
     @OneToOne(cascade = CascadeType.ALL , mappedBy ="foyer")
     @JsonIgnore

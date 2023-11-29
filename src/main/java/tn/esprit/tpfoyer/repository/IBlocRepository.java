@@ -12,4 +12,7 @@ import java.util.List;
 @Repository
 
 public interface IBlocRepository extends JpaRepository<Bloc,Long> {
+
+    List<Bloc> findByFoyer_UnivIdUniversite(long idUniversite);
+
 }

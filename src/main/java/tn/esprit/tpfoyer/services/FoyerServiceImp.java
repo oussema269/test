@@ -5,13 +5,15 @@ import org.springframework.stereotype.Service;
 import tn.esprit.tpfoyer.entities.Foyer;
 import tn.esprit.tpfoyer.entities.Universite;
 import tn.esprit.tpfoyer.repository.IFoyerRepository;
+import tn.esprit.tpfoyer.repository.IUniversiteRepository;
 
 import java.util.List;
 @Service
 public class FoyerServiceImp implements IFoyerService {
 @Autowired
     IFoyerRepository iFoyerRepository;
-
+@Autowired
+    IUniversiteRepository universiteRepository;
     @Override
     public List<Foyer> retrieveAllFoyer() {
         return iFoyerRepository.findAll();
@@ -39,7 +41,7 @@ public class FoyerServiceImp implements IFoyerService {
 
     @Override
     public Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer, long idUniversite) {
-        Universite u=iFoyerRepository.findByUniv_IdUniversite(idUniversite);
+        Universite u=universiteRepository.findById(idUniversite).get();
         foyer.setUniv(u);
         iFoyerRepository.save(foyer);
         return foyer;

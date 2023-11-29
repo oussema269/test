@@ -3,6 +3,7 @@ package tn.esprit.tpfoyer.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entities.Chambre;
+import tn.esprit.tpfoyer.entities.TypeChambre;
 import tn.esprit.tpfoyer.services.IChambreService;
 
 import java.util.List;
@@ -39,8 +40,16 @@ public class ChambreController {
     {
         return chambreService.getChambresParBlocEtType(idBloc,c.getTypeC());
     }
+    @GetMapping("/getChambresParNomUniversite/{nomUniv}")
+    public List<Chambre> getChambresParNomUniversite(@PathVariable("nomUniv") String nom) {
+        return chambreService.getChambresParNomUniversite(nom);
+    }
 
-
+    @GetMapping("/getChambresParBlocEtTypeJPQL/{idBloc}")
+    public List<Chambre>getChambresParBlocEtTypeJPQL(@PathVariable("idBloc") Long idBloc,@RequestBody Chambre c)
+    {
+        return chambreService.findByBlocIdBlocAndTypeChambreJPQL(idBloc,c.getTypeC());
+    }
 
 
 

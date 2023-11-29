@@ -48,10 +48,16 @@ public class BlocServiceImp implements IBlocService {
         for(Long id:idChambre )
         {
             Chambre c=iChambreRepository.findById(id).get();
-
            c.setBloc(b);
+           iChambreRepository.save(c);
         }
 
+
         return  b;
+    }
+
+    @Override
+    public List<Bloc> findIdUniv(long idUniversite) {
+        return iBlocRepository.findByFoyer_UnivIdUniversite(idUniversite);
     }
 }

@@ -13,4 +13,6 @@ public interface IBlocService {
     public void removeBlock(Long BlocId);
     public Bloc modifyBloc(Bloc bloc);
     public Bloc affectBlocChambre(List<Long> idChambre , long idBloc);
+    List<Bloc> findIdUniv(long idUniversite);
+
 }

@@ -1,5 +1,6 @@
 package tn.esprit.tpfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,5 +23,6 @@ public class Reservation {
     private boolean estValide;
 
     @ManyToMany(mappedBy="reservationList", cascade = CascadeType.ALL)
+
     private List<Etudiant> etudiantList;
 }

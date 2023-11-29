@@ -1,10 +1,7 @@
 package tn.esprit.tpfoyer.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Universite {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long idUniversite;
     private String nomUniversite;
     private String adresse;
